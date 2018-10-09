@@ -1,0 +1,18 @@
+.static {
+  cursor: not-allowed;
+}
+.draggable {
+  cursor: move;
+}
+
+.draggable2 {
+  cursor: move;
+}
+
+#can{
+    
+    position: relative;
+    margin-top: 40px;
+    
+    
+}

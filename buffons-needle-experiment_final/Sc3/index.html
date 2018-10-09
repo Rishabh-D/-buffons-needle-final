@@ -1,0 +1,109 @@
+<html>
+  <head>
+      <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <link rel="stylesheet" href="index.css">
+  
+    
+    <link rel="stylesheet" href="index.css"/>
+    </head>
+  <body>
+      <div class="container">
+          
+          
+          
+              <div class="bg-warning text-success"><p>A needle has two properties <strong> (1) </strong> Angle <strong>(2) </strong> Its distance from center of needle to nearest line.</p>
+          <p>Needle will intersect the line or not depends on these properties.</p>
+          </div>
+          
+          <br><br><br>
+          
+          
+          
+          <div class="row">
+              <div class="col-sm-6">
+    <svg  id="svg1" width="300" height="300" onload="makeDraggable(evt)">
+       <line x1="0" x2="300" y1="0" y2="00" stroke="#00ACE9" stroke-width="4" stroke-linecap="butt"/>
+       <line x1="0" x2="300" y1="300" y2="300" stroke="#00ACE9" stroke-width="4" stroke-linecap="butt"/>
+       <line x1="0" x2="0" y1="0" y2="300" stroke="#00ACE9" stroke-width="4" stroke-linecap="butt"/>
+       <line x1="300" x2="300" y1="00" y2="300" stroke="#00ACE9" stroke-width="4" stroke-linecap="butt"/>
+    
+    <!--crosssing Lines-->
+        <line x1="0" x2="300" y1="100" y2="100" stroke="orange" stroke-width="1.5" stroke-linecap="butt"/>
+        <line x1="0" x2="300" y1="200" y2="200" stroke="orange" stroke-width="1.5" stroke-linecap="butt"/>
+
+
+    
+    
+<!--<rect class='static' x="10" y="10" width="10" height="100" stroke="#00ACE9" stroke-width="2"/>-->
+<!--<rect class='draggable' x="80" y="10" width="10" height="50" stroke="blue" stroke-width="2"/>-->
+<!--<line class='draggable' id="line1" x1='100' y1="150" x2='72' y2="246" stroke="red" stroke-width="1"/>-->
+        
+      
+<!--    <line  id="line1" x1='100' y1="100" x2='40' y2="180" stroke="blue" stroke-width="5"/>-->
+        
+        
+    <line class="draggable" id="line1" x1='100' y1="100" x2='40' y2="180" stroke="red" stroke-width="1"/>
+        
+    
+        
+    <line id="line2" x1='0' y1='0' x2='0' y2='0' stroke="blue" stroke-width="1"></line>
+    <line id="line3" x1='0' y1='0' x2='0' y2='0' stroke="blue" stroke-width="1"></line>
+           
+        
+        <text id="text" x="0" y="0" fill="#2EC19F" style="font-size:10px">100sin(&#920)</text>
+        <text id="text2" x="0" y="0" fill="#2EC19F" style="font-size:7px">&#920</text>
+        
+   
+</svg>
+              </div>
+              
+              <div class="col-sm-6" align="center" id="can">
+      
+        <canvas id="myCanvas" height="220px" style="border:1px solid #000000"></canvas>
+          </div>
+      </div>
+          
+          <div class="row">
+              <div class="col-sm-2 text-info bg-danger" id="ang">angle = 53.13</div>
+              <div class="col-sm-3 text-info bg-success" id="dis">distance from nearest line = 39</div>
+              </div>
+          <br><br>
+          <div class="row">
+          <div class="text-info">
+              So, interesction of needle as shown in <span style="color:red">red</span> actually traces a sine curve.
+              <p> If we divide this area of sine curve with total area comprising <span style="color:green">green</span> and <span style="color:red">red</span> patterns we can get closer to discover PI</p>
+          </div>
+              </div>
+          
+          <div class='row' id="formula">
+          </div>
+          
+          <div class="text-warning"> solving and re-arranging this equation we can obtain "PI"</div>
+          
+          <a href="../screen2.html" class="btn btn-info" style="float: left;">Back</a>
+<!--          <a class="btn btn-info" style="margin-left:750px;" onclick="erase()">Clear</a>-->
+          <a href="../final.html" class="btn btn-info" style="float: right;">Next</a>
+          
+          
+          
+          </div>
+          
+          
+          
+      
+  <script src="indexoriginal.js"></script>
+  <script src="probability_graph.js"></script>
+
+  </body>
+    <script type="text/x-mathjax-config"> MathJax.Hub.Config({ extensions: ["tex2jax.js"], jax: ["input/TeX","output/HTML-CSS"], tex2jax: { inlineMath: [["\\(","\\)"]] } }); </script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script>
+    document.getElementById('formula').innerHTML="\\[probability\\ of\\ intersection\\ =\\ p=\\frac{\\int_{0}^{Pi} 0.5*100*sinx\\ dx}{0.5*100* PI}\\]";</script>
+  
+  </html>

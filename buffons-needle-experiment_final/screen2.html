@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+<head>
+    <title>BUFFONS NEEDLES</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' href='screen1.css'>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    
+    <script type="text/x-mathjax-config"> MathJax.Hub.Config({ extensions: ["tex2jax.js"], jax: ["input/TeX","output/HTML-CSS"], tex2jax: { inlineMath: [["\\(","\\)"]] } }); </script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  
+  <link rel="stylesheet" href="screen1.css">
+  
+   
+</head>
+
+<body>
+<!--  <div class="jumbotron vertical-center">-->
+  <div class= "container-fluid">
+   <h4><center>BUFFONS NEEDLES</center></h4>
+  <div class="bg-warning">
+  <p>Let us see how outcome of this experiment gets closer to PI ...</p>
+</div>
+      <div class="row">
+          <div class="col-sm-1"></div>
+      <div class="col-sm-4">
+      <svg id="needle_svg" width='300' height='300' ondrop="drop(event)" ondragover="allowDrop(event)">
+       <!--border-->
+       
+       <line x1="0" x2="300" y1="0" y2="00" stroke="#00ACE9" stroke-width="4" stroke-linecap="butt"/>
+       <line x1="0" x2="300" y1="300" y2="300" stroke="#00ACE9" stroke-width="4" stroke-linecap="butt"/>
+       <line x1="0" x2="0" y1="0" y2="300" stroke="#00ACE9" stroke-width="4" stroke-linecap="butt"/>
+       <line x1="300" x2="300" y1="00" y2="300" stroke="#00ACE9" stroke-width="4" stroke-linecap="butt"/>
+       
+        <!--crosssing Lines-->
+        <line x1="0" x2="300" y1="100" y2="100" stroke="orange" stroke-width="1.5" stroke-linecap="butt"/>
+        <line x1="0" x2="300" y1="200" y2="200" stroke="orange" stroke-width="1.5" stroke-linecap="butt"/>
+          </svg>
+          </div>
+      <div class="col-sm-7">
+        <div id="graph"> </div>
+          </div>
+      </div>
+        <br>  
+        <div class="row">
+        <div class="col-sm-1"></div>
+            <div class="col-sm-4">
+
+                <img src="needle2.jpg" width=100px height="150px" id="myneedle2" draggable="true" ondrag="drag(event)" style="cursor: move">                
+                <div>
+                &#8194 &#8194 &#8194 &#8194 &#8194 length:<input id="input_length" type="number" placeholder="length" min="0" max="100" value="100">
+                <input style="visibility:hidden" id="input_angle" type="number" step="1"  placeholder="angle">
+                </div>
+            
+           </div>
+            
+            <div class="col-sm-2">
+            
+            
+            
+            </div>
+            
+            <div class="col-sm-4" id="result"> 
+                <div class="card">
+                    <div id="card_body2" class="card-body">
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1"></div>
+                
+    
+    </div>
+      <br><br>
+      <div class="row">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-4" id="input_card">  
+      
+        <div class="card">
+        
+            <div class="btn-group" >
+            <button id="manual" class="btn btn-info btn-outline-primary" style="width:200px" onclick="fun_manual()">Manual</button>
+            <button id="auto" class="btn btn-info btn-outline-primary" style="width:200px" onclick="fun_auto()">Auto</button> 
+            </div>
+        <div id="card_body" class="card-body text-center"></div>
+        </div>
+          </div>
+          <div class="col-sm-2" ></div>
+          <div class="col-sm-4" >
+          <div id="latex"></div>
+          </div>
+          
+      <div class="col-sm-1"></div>
+      </div>
+          
+      
+      <div class="row">
+      <div class="col-sm-11 text-success">
+  <p>Click <strong>NEXT</strong> to experiment and discover 'PI'  ...</p>
+</div>
+          </div>
+          <div>
+              <a href="screen1.html" class="btn btn-info" style="float: left;">Back</a>
+              <a class="btn btn-info" style="margin-left:920px;" onclick="erase()">Clear</a>
+              <a href="Sc3/index.html" class="btn btn-info" style="float: right;">Next</a>
+              
+              
+      
+    </div>
+      </div>
+    
+    </body>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="misc.js"></script>
+    <script src="screen2.js"></script>
+    <script src="needle.js"></script>
+    <script src="canvas.js"></script>
+    <script src="plot.js"></script>
+    <script src="timer.js"></script>
+    
+    <script>plot();</script>
+    
+    
+  <script>
+        
+  var o=document.getElementById("card_body2");
+
+  function rrr() {
+   
+    var tex = "\\frac{Needles\\ intersected}{Needles\\ dropped}= \\frac{"+total_inter+"}{"+total_needle+"}=p";
+    o.innerHTML = "\\["+tex+"\\]";
+      
+      
+    MathJax.Hub.Queue(["Typeset",MathJax.Hub,o]);
+  }
+        
+        
+rrr();
+
+</script>
+    
+     <script>
+    var p=document.getElementById('latex');
+    p.innerHTML="\\[PI=\\frac{2*length\\ of\\ needles}{separation\\ between\\ lines * p}\\]";
+    MathJax.Hub.Queue(["Typeset",MathJax.Hub,p]);
+    </script>
+    
+    
+            
+</html>
+
+    
